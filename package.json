@@ -2,11 +2,11 @@
   "name": "agstore",
   "version": "1.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "tsc && node dist/index.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "build": "tcs",
+    "build": "tsc",
     "format": "",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
