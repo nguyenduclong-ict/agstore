@@ -1,33 +1,13 @@
-import { ObjectFunctions, AgStoreState } from '../lib/decorator';
+import { StoreModule } from '.';
 
-interface StoreModuleOptions {
+export interface StoreModuleOptions {
   nameSpace: string;
   state: object;
   actions: object;
   watch: object;
 }
 
-export class StoreModule {
-  nameSpace: string;
-
-  @AgStoreState
-  state: object;
-
-  @ObjectFunctions
-  actions: object;
-
-  @ObjectFunctions
-  watch: object;
-
-  constructor(options: StoreModuleOptions) {
-    this.nameSpace = options.nameSpace || '';
-    this.state = options.state || {};
-    this.actions = options.actions || {};
-    this.watch = options.watch || {};
-  }
-}
-
-export type Func = (...args) => any;
+export type Func = (...args: any[]) => any;
 
 export type WatchFunction = (
   value: any,

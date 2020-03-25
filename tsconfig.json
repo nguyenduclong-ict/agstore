@@ -6,17 +6,20 @@
     "declaration": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
     "lib": ["dom", "es2017"],
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
     "pretty": true,
     "removeComments": false,
     "target": "es2017",
     "baseUrl": ".",
     "outDir": "dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": {
+      "@angular/core": ["node_modules/@angular/core"],
+      "rxjs/*": ["node_modules/rxjs/*"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "e2e"]

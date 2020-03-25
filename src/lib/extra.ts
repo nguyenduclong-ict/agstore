@@ -1,5 +1,5 @@
 export function hasProperty(obj: object, property: string[] | string) {
-  let current = obj;
+  let current: any = obj;
   if (typeof property === 'string') {
     property = property.split(/\.|\//);
   }

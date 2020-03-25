@@ -1,4 +1,6 @@
-export function hasProperty(obj, property) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function hasProperty(obj, property) {
     let current = obj;
     if (typeof property === 'string') {
         property = property.split(/\.|\//);
@@ -11,4 +13,5 @@ export function hasProperty(obj, property) {
         return false;
     });
 }
+exports.hasProperty = hasProperty;
 //# sourceMappingURL=extra.js.map

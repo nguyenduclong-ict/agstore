@@ -1,15 +1,9 @@
-interface StoreModuleOptions {
+import { StoreModule } from '.';
+export interface StoreModuleOptions {
     nameSpace: string;
     state: object;
     actions: object;
     watch: object;
-}
-export declare class StoreModule {
-    nameSpace: string;
-    state: object;
-    actions: object;
-    watch: object;
-    constructor(options: StoreModuleOptions);
 }
 export declare type Func = (...args: any[]) => any;
 export declare type WatchFunction = (value: any, oldValue: any, injects?: {
@@ -27,4 +21,3 @@ export interface WatchItem {
 export interface AgStoreConfigRoot {
     modules: StoreModule[];
 }
-export {};
