@@ -7,11 +7,17 @@ import { AgStoreState, ObjectFunctions } from '../lib/decorator';
 const container = new Map<string, any>();
 let MODULES: StoreModule[] = new Array<StoreModule>();
 const WATCHERS: WatchItem[] = new Array<WatchItem>();
-const INJECTS: object | any = {};
+let INJECTS: object | any = {};
 
 export function initStore(configs: AgStoreConfigRoot) {
-  const { modules } = configs;
+  const { modules, injects, watchers } = configs;
   MODULES = modules || MODULES;
+  INJECTS = injects || INJECTS;
+  for (const key in watchers) {
+    if (watchers.hasOwnProperty(key)) {
+      WATCHERS.push({ path: key, func: watchers[key] });
+    }
+  }
 }
 
 // decorator
@@ -25,10 +31,10 @@ export function mapState(modulePath?: string, name?: string) {
 
   const module: StoreModule = MODULES.find((m) => m.nameSpace === modulePath);
   if (!module) {
-    throw new Error('AgStore Error: Cannot found moudle ' + modulePath);
+    throw new Error('AgStore Error - (MapState): Cannot found moudle "' + modulePath + '"');
   }
   if (!hasProperty(module.state, name)) {
-    throw new Error('AgStore Error: Cannot found state ' + name + ' in ' + modulePath);
+    throw new Error('AgStore Error - (MapState): Cannot found state "' + name + '" in "' + modulePath + '"');
   }
 
   return (target: any, propertyKey: string | symbol) => {
@@ -54,10 +60,10 @@ export function mapAction(modulePath?: string, name?: string) {
 
   const module: StoreModule | null = MODULES.find((m) => m.nameSpace === modulePath);
   if (!module) {
-    throw new Error('AgStore Error: Cannot found moudle ' + modulePath);
+    throw new Error('AgStore Error - (mapAction): Cannot found moudle ' + `"${modulePath}"`);
   }
   if (!hasProperty(module.actions, name)) {
-    throw new Error('AgStore Error: Cannot found action ' + name + ' in ' + modulePath);
+    throw new Error(`AgStore Error - (mapAction): Cannot found action "${name}" + name in "${modulePath}"`);
   }
   const originalFuntion: Func = module.actions[name];
   return (target: any, propertyKey: string | symbol) => {
@@ -70,7 +76,7 @@ export function mapAction(modulePath?: string, name?: string) {
 export function getState(modulePath: string, name: string): any {
   const module: StoreModule = MODULES.find((m) => m.nameSpace === modulePath);
   if (!module) {
-    throw new Error('AgStore Error(getState): Cannot found moudle ' + modulePath);
+    throw new Error('AgStore Error - (getState): Cannot found moudle ' + `"${modulePath}"`);
   }
   return get(module.state, name);
 }
@@ -78,7 +84,7 @@ export function getState(modulePath: string, name: string): any {
 export function setState(modulePath: string, name: string, value: any) {
   const module: StoreModule = MODULES.find((m) => m.nameSpace === modulePath);
   if (!module) {
-    throw new Error('AgStore Error(getState): Cannot found moudle ' + modulePath);
+    throw new Error('AgStore Error - (getState): Cannot found moudle ' + `"${modulePath}"`);
   }
 }
 
@@ -86,10 +92,10 @@ export function setState(modulePath: string, name: string, value: any) {
 export function dispatch(modulePath: string, name: string, ...args: any): Promise<any> {
   const module: StoreModule = MODULES.find((m) => m.nameSpace === modulePath);
   if (!module) {
-    throw new Error('AgStore Error: Cannot found moudle ' + modulePath);
+    throw new Error('AgStore Error - (dispatchAction): Cannot found moudle ' + `"${modulePath}"`);
   }
   if (!hasProperty(module.actions, name)) {
-    throw new Error('AgStore Error: Cannot found action ' + name + ' in ' + modulePath);
+    throw new Error(`AgStore Error - (dispatchAction): Cannot found action "${name}" + name in "${modulePath}"`);
   }
   const originalFuntion: Func = module.actions[name];
   // call function

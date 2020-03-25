@@ -23,5 +23,7 @@ export interface WatchItem {
 }
 
 export interface AgStoreConfigRoot {
-  modules: StoreModule[];
+  modules?: StoreModule[];
+  injects?: object | any;
+  watchers?: object | any;
 }
