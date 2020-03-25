@@ -51,7 +51,8 @@ class AgStore {
         const originalFuntion = module.actions[name];
         return (target, propertyKey) => {
             target[propertyKey] = (...args) => {
-                originalFuntion(Object.assign({ state: module.state, getState: exports.getState,
+                originalFuntion(Object.assign({ state: module.state, dispatch: exports.dispatch,
+                    getState: exports.getState,
                     setState: exports.setState }, store_1.default.INJECTS), ...args);
             };
         };
@@ -112,6 +113,7 @@ exports.initStore = AgStore.initStore;
 exports.mapState = AgStore.mapState;
 exports.mapAction = AgStore.mapAction;
 exports.getState = AgStore.getState;
+exports.dispatch = AgStore.dispatch;
 exports.setState = AgStore.setState;
 exports.addWatcher = AgStore.addWatcher;
 exports.removeWatcher = AgStore.removeWatcher;

@@ -15,6 +15,7 @@ export declare const initStore: typeof AgStore.initStore;
 export declare const mapState: typeof AgStore.mapState;
 export declare const mapAction: typeof AgStore.mapAction;
 export declare const getState: typeof AgStore.getState;
+export declare const dispatch: typeof AgStore.dispatch;
 export declare const setState: typeof AgStore.setState;
 export declare const addWatcher: typeof AgStore.addWatcher;
 export declare const removeWatcher: typeof AgStore.removeWatcher;

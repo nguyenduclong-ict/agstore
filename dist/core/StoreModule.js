@@ -11,6 +11,7 @@ const extra_1 = require("../lib/extra");
 const lodash_1 = require("lodash");
 const uuid_1 = require("uuid");
 const store_1 = require("./store");
+const AgStore_1 = require("./AgStore");
 class StoreModule {
     constructor(options) {
         this.state = {};
@@ -54,6 +55,6 @@ function findAndRunWatcher(module, name, value, oldValue) {
         lodash_1.get(module.watch, name),
         ...store_1.default.WATCHERS.filter((w) => w.path === extra_1.joinPath(module.nameSpace, name)).map((item) => item.func),
     ].filter((f) => typeof f === 'function');
-    watchers.forEach((func) => func(value, oldValue, store_1.default.INJECTS));
+    watchers.forEach((func) => func(value, oldValue, Object.assign({ getState: AgStore_1.getState, setState: AgStore_1.setState, dispatch: AgStore_1.dispatch }, store_1.default.INJECTS)));
 }
 //# sourceMappingURL=StoreModule.js.map

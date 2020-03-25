@@ -53,5 +53,7 @@ function findAndRunWatcher(module: StoreModule, name: string, value: any, oldVal
     get(module.watch, name),
     ...Store.WATCHERS.filter((w) => w.path === joinPath(module.nameSpace, name)).map((item) => item.func),
   ].filter((f) => typeof f === 'function');
-  watchers.forEach((func) => func(value, oldValue, { getState, setState, dispatch, ...Store.INJECTS }));
+  watchers.forEach((func) =>
+    func(value, oldValue, { state: module.state, getState, setState, dispatch, ...Store.INJECTS }),
+  );
 }
