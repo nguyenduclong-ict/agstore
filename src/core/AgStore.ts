@@ -54,6 +54,7 @@ class AgStore {
         originalFuntion(
           {
             state: module.state,
+            dispatch,
             getState,
             setState,
             ...Store.INJECTS,
@@ -131,6 +132,7 @@ export const initStore = AgStore.initStore;
 export const mapState = AgStore.mapState;
 export const mapAction = AgStore.mapAction;
 export const getState = AgStore.getState;
+export const dispatch = AgStore.dispatch;
 export const setState = AgStore.setState;
 export const addWatcher = AgStore.addWatcher;
 export const removeWatcher = AgStore.removeWatcher;

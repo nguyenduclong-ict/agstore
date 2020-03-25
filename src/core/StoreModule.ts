@@ -4,6 +4,7 @@ import { joinPath } from '../lib/extra';
 import { get } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import Store from './store';
+import { dispatch, getState, setState } from './AgStore';
 
 export class StoreModule {
   nameSpace: string;
@@ -52,5 +53,5 @@ function findAndRunWatcher(module: StoreModule, name: string, value: any, oldVal
     get(module.watch, name),
     ...Store.WATCHERS.filter((w) => w.path === joinPath(module.nameSpace, name)).map((item) => item.func),
   ].filter((f) => typeof f === 'function');
-  watchers.forEach((func) => func(value, oldValue, Store.INJECTS));
+  watchers.forEach((func) => func(value, oldValue, { getState, setState, dispatch, ...Store.INJECTS }));
 }

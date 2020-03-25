@@ -1,9 +1,9 @@
 import { StoreModule } from './StoreModule';
 export interface StoreModuleOptions {
-    nameSpace: string;
+    nameSpace?: string;
     state: object;
-    actions: object;
-    watch: object;
+    actions?: object;
+    watch?: object;
 }
 export declare type Func = (...args: any[]) => any;
 export declare type WatchFunction = (value: any, oldValue: any, injects?: {
