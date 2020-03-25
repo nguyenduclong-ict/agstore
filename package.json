@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "nodemon --watch 'src/**/*.ts' --watch 'e2e/**/*.ts' --exec 'ts-node' e2e/index.ts",
     "start": "tsc && node dist/index.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc",
