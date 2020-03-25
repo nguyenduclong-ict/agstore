@@ -1,9 +1,8 @@
-import { AgStoreState, ObjectFunctions } from 'src/lib/decorator';
+import { AgStoreState, ObjectFunctions } from '../lib/decorator';
 import { StoreModuleOptions, WatchFunction } from '.';
-import { joinPath } from 'src/lib/extra';
+import { joinPath } from '../lib/extra';
 import { get } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-
 import Store from './store';
 
 export class StoreModule {

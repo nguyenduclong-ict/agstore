@@ -2,7 +2,6 @@ import { AgStoreConfigRoot, Func, WatchFunction } from './type';
 import { get, set } from 'lodash';
 import { joinPath, hasProperty } from '../lib/extra';
 import { formatParams } from '../lib/decorator';
-
 import Store from './store';
 import { StoreModule } from './StoreModule';
 
