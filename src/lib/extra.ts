@@ -11,3 +11,10 @@ export function hasProperty(obj: object, property: string[] | string) {
     return false;
   });
 }
+
+export function joinPath(...args: string[]) {
+  return args
+    .map((p) => p.replace(/\//g, '.').replace(/^\.|\.$/g, ''))
+    .filter((item) => !!item)
+    .join('.');
+}

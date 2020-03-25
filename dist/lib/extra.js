@@ -14,4 +14,11 @@ function hasProperty(obj, property) {
     });
 }
 exports.hasProperty = hasProperty;
+function joinPath(...args) {
+    return args
+        .map((p) => p.replace(/\//g, '.').replace(/^\.|\.$/g, ''))
+        .filter((item) => !!item)
+        .join('.');
+}
+exports.joinPath = joinPath;
 //# sourceMappingURL=extra.js.map

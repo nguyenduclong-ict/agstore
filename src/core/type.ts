@@ -1,4 +1,4 @@
-import { StoreModule } from '.';
+import { StoreModule } from './StoreModule';
 
 export interface StoreModuleOptions {
   nameSpace: string;
@@ -15,7 +15,7 @@ export type WatchFunction = (
   injects?: { getState: Func; setState: Func } | any,
 ) => Promise<any>;
 
-export type ActionFunction = (injects?: { getState: Func; setState: Func } | any, ...args: any) => Promise<any>;
+export type ActionFunction = (injects?: { getState?: Func; setState?: Func } | any, ...args: any) => Promise<any>;
 
 export interface WatchItem {
   path: string;
