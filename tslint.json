@@ -1,3 +1,8 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"]
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "lib", "camelCase"],
+    "component-selector": [true, "element", "lib", "kebab-case"],
+    "quotemark": false
+  }
 }

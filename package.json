@@ -1,20 +1,7 @@
 {
   "name": "agstore",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "start": "tsc && node dist/index.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "build": "tsc",
-    "format": "",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
   "keywords": [],
   "author": "Nguyen Duc Long",
   "license": "ISC",
@@ -25,22 +12,11 @@
   "bugs": {
     "url": "https://github.com/nguyenduclong-ict/agstore/issues"
   },
-  "devDependencies": {
+  "peerDependencies": {
+    "@angular/common": "^9.0.7",
+    "@angular/core": "^9.0.7",
+    "tslib": "^1.10.0",
     "@types/lodash": "^4.14.149",
-    "@types/uuid": "^7.0.2",
-    "lodash": "^4.17.15",
-    "nodemon": "^2.0.2",
-    "prettier": "^2.0.2",
-    "rollup": "^2.2.0",
-    "ts-node": "^8.8.1",
-    "tslint": "^6.1.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.8.3",
-    "uglify-js": "^3.8.0"
-  },
-  "dependencies": {
-    "@types/lodash": "^4.14.149",
-    "@types/uuid": "^7.0.2",
-    "lodash": "^4.17.15"
+    "@types/uuid": "^7.0.2"
   }
 }
