@@ -10,7 +10,6 @@ export class StoreModule {
 
   @AgStoreState
   state: object = {};
-  protected STATE: any;
 
   @ObjectFunctions
   actions: object | any;
@@ -20,10 +19,9 @@ export class StoreModule {
 
   constructor(options: StoreModuleOptions) {
     this.nameSpace = options.nameSpace || '';
-    this.STATE = options.state || {};
     this.actions = options.actions || {};
     this.watch = options.watch || {};
-    defineState(this.state, this.STATE, this);
+    defineState(this.state, options.state, this);
   }
 }
 

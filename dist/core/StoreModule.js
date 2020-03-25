@@ -6,8 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const decorator_1 = require("src/lib/decorator");
-const extra_1 = require("src/lib/extra");
+const decorator_1 = require("../lib/decorator");
+const extra_1 = require("../lib/extra");
 const lodash_1 = require("lodash");
 const uuid_1 = require("uuid");
 const store_1 = require("./store");
