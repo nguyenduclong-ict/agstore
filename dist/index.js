@@ -4,5 +4,4 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./core"));
-__export(require("./core/agstore.module"));
 //# sourceMappingURL=index.js.map
